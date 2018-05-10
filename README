@@ -1,0 +1,9 @@
+This is a quick little script to help my friend transcribe audio files. 
+It takes WAV or FLAC files and uses ffmpeg to split the files into 30 second clips.
+Each output files is then run sequentially through SpeechRecognizer and it uses google to transcribe what the clip says. 
+The result is then appended to a text file named after the audio file. 
+
+Usage:
+ ./speechToText.py <audiofile>
+ 
+ The application will make a 'out' folder which will contain all of the audio segemnts. 
