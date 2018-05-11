@@ -31,6 +31,6 @@ for filename in sorted(os.listdir('./out')):
         count=count+1
     except:
         outputG = open("{}.txt".format(sys.argv[1]), 'a')
-        outputG.write("\n{} {} \n***Could not recognize audio***\n ".format(filename,str(datetime.timedelta(seconds=count*30))))
+        outputG.write("***Could not recognize audio***\n ")
         outputG.close()
         count=count+1
