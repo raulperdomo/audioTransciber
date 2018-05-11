@@ -18,14 +18,19 @@ except:
     print("No such file {}.txt".format(sys.argv[1]))
 count = 0
 for filename in sorted(os.listdir('./out')):
-    audioFile = sr.AudioFile(os.path.join('./out/',filename))
-    with audioFile as source:
-        audio = r.record(source)
-    outputG = open("{}.txt".format(sys.argv[1]), 'a')
+    try:
+        audioFile = sr.AudioFile(os.path.join('./out/',filename))
+        with audioFile as source:
+            audio = r.record(source)
+        outputG = open("{}.txt".format(sys.argv[1]), 'a')
 
-    outputG.write("\n{} {} \n ".format(filename,str(datetime.timedelta(seconds=count*30))))
-    outputG.write(r.recognize_google(audio))
-    outputG.write("\n")
-    outputG.close()
-    count=count+1
-
+        outputG.write("\n{} {} \n ".format(filename,str(datetime.timedelta(seconds=count*30))))
+        outputG.write(r.recognize_google(audio))
+        outputG.write("\n")
+        outputG.close()
+        count=count+1
+    except:
+        outputG = open("{}.txt".format(sys.argv[1]), 'a')
+        outputG.write("\n{} {} \n***Could not recognize audio***\n ".format(filename,str(datetime.timedelta(seconds=count*30))))
+        outputG.close()
+        count=count+1
