@@ -23,5 +23,6 @@ for filename in sorted(os.listdir('./out')):
 
     outputG.write("\n{}\n ".format(filename))
     outputG.write(r.recognize_google(audio))
+    outputG.write("\n")
     outputG.close()
 
