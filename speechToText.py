@@ -17,7 +17,9 @@ try:
 except:
     print("No such file {}.txt".format(sys.argv[1]))
 count = 0
+print("{} audio files created to process".format(len(os.listdir('./out'))))
 for filename in sorted(os.listdir('./out')):
+    print("Processing {}".format(filename))
     try:
         audioFile = sr.AudioFile(os.path.join('./out/',filename))
         with audioFile as source:
