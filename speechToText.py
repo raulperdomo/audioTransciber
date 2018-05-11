@@ -4,6 +4,7 @@ import speech_recognition as sr
 import sys
 import os
 import shutil
+import datetime
 r = sr.Recognizer()
 try:
     shutil.rmtree('./out')
@@ -22,7 +23,7 @@ for filename in sorted(os.listdir('./out')):
         audio = r.record(source)
     outputG = open("{}.txt".format(sys.argv[1]), 'a')
 
-    outputG.write("\n{} {} seconds\n ".format(filename,count*30))
+    outputG.write("\n{} {} \n ".format(filename,str(datetime.timedelta(seconds=count*30))))
     outputG.write(r.recognize_google(audio))
     outputG.write("\n")
     outputG.close()
